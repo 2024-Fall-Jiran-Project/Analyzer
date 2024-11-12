@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>파일 업로드</title>
+</head>
+<body>
+    <h1>파일 업로드</h1>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <label for="file">파일 선택:</label>
+        <input type="file" name="file" id="file" required>
+        <button type="submit">업로드</button>
+    </form>
+
+    {% if content %}
+        <h2>파일 내용:</h2>
+        <pre>{{ content }}</pre>
+    {% endif %}
+</body>
+</html>

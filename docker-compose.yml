@@ -7,9 +7,9 @@ services:
       dockerfile: spot/Dockerfile
     container_name: spot_container
     ports:
-      - "5000:5000"
+      - "301:301"
     volumes:
-      - shared-data:/shared
+      - shared-data:/app/shared
 
   java_app:
     build:
@@ -19,7 +19,9 @@ services:
       - spotbugs
     container_name: analyzer_container
     volumes:
-      - shared-data:/shared
+      - shared-data:/app/shared
+    ports:
+    - "5000:5000"
 
 volumes:
   shared-data:
