@@ -1,0 +1,13 @@
+# Dockerfile.cppcheck
+
+# 베이스 이미지로 Debian 사용
+FROM debian:latest
+
+# cppcheck 설치
+RUN apt-get update && apt-get install -y cppcheck
+
+# 작업 디렉터리 설정
+WORKDIR /workspace
+
+# 기본 명령어 설정
+ENTRYPOINT ["cppcheck"]
