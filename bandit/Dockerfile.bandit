@@ -1,0 +1,12 @@
+# Dockerfile.bandit
+FROM python:3.9-slim
+
+WORKDIR /app
+
+RUN pip install bandit
+
+# Copy all contents to /app
+COPY bandit /app
+
+CMD ["python", "bandit.py"]
+

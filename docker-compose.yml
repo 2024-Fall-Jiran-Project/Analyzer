@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  bandit:
+    build:
+      context: .
+      dockerfile: bandit/Dockerfile.bandit
+    container_name: bandit-analyzer
+    volumes:
+      - ./input:/input
+
+  cppcheck:
+    build:
+      context: .
+      dockerfile: cppcheck/Dockerfile.cppcheck
+    container_name: cppcheck-analyzer
+    volumes:
+      - ./input:/input 
+
+  semgrep:
+    build:
+      context: .
+      dockerfile: semgrep/Dockerfile.semgrep
+    container_name: semgrep-analyzer
+    volumes:
+      - ./input:/input
+
+  devskim:
+    build: 
+      context: .
+      dockerfile: devskim/Dockerfile.devskim
+    container_name: devskim-analyzer
+    volumes:
+      - ./input:/input
+
+volumes:
+  shared-data:

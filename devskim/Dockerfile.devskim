@@ -3,17 +3,14 @@
 # 1. .NET Core SDK 이미지 사용
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
 
-# 2. 작업 디렉토리 설정
-WORKDIR /workspace
+WORKDIR /app/
 
-# 3. DevSkim CLI 설치
 RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI
+RUN apt-get update && apt-get install -y python3
 
-# 4. 환경 변수 설정 (DevSkim을 PATH에 추가)
 ENV PATH="$PATH:/root/.dotnet/tools"
 
-# 5. 입력 디렉토리 설정
-VOLUME [ "/workspace/input", "/workspace/output" ]
+COPY devskim /app/
 
 # 기본 명령어 설정
-ENTRYPOINT ["devskim"]
+CMD ["python3", "devskim.py"]
