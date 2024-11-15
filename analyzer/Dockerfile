@@ -6,7 +6,7 @@ WORKDIR /app
 
 # 필요한 파일 복사 및 requests 라이브러리 설치
 COPY analyzer /app
-RUN pip install requests
+RUN apt-get update && pip install flask && pip install requests
 
 # Reader 프로그램 실행
 CMD ["python", "analyzer.py"]
