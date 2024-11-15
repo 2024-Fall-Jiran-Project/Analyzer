@@ -1,0 +1,14 @@
+# Base image
+FROM python:3.11
+
+# Install Semgrep
+RUN pip install semgrep
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the code and rules into the container
+COPY semgrep /app
+
+# Ensure that Semgrep runs with all available rules and saves output to TXT format
+CMD ["python", "semgrep.py"]
