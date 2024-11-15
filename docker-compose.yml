@@ -21,5 +21,13 @@ services:
     volumes:
       - shared-data:/shared
 
+  frama-c:
+    build: 
+      context: .
+      dockerfile: frama-c/Dockerfile
+    container_name: frama-c
+    volumes:
+      - ./input:/app/input
+
 volumes:
   shared-data:
